@@ -1,5 +1,12 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import styles from '../../styles/Home.module.css'
+
+export async function getStaticProps(context) {
+  const res = await fetch('https://.../posts');
+  const posts = await res.json();
+  // passed to page component as props
+  return { props: { posts } }
+}
 
 export default function Home() {
   return (
